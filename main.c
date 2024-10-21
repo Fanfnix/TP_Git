@@ -75,6 +75,53 @@ void afficherGrille(int grille[9][9], int n)
 }
 // Fin EX3 //
 
+// EX4 //
+
+int verifListe(int liste[9], int n)
+{
+    int parcourus[9];
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < strlen(parcourus); j++)
+        {
+            if (liste[i] == parcourus[j])
+            {
+                return 0;
+            }
+        }
+    }
+    return 1;
+}
+
+int verifGrille(int grille[9][9], int n)
+{
+    int colonne[9][9];
+    for (int i = 0; i < n; i++)
+    {
+        if (verifListe(grille[i], n) == 0)
+        {
+            return 0;
+        }
+        for (int j = 0; j < n; j++)
+        {
+            colonne[j][i] = grille[i][j];
+            if (grille[i][j] < 1 || grille[i][j] > n)
+            {
+                return 0;
+            }
+        }
+    }
+    for (int i1 = 0; i1 < n; i1++)
+    {
+        if (verifListe(colonne[i1], n) == 0)
+        {
+            return 0;
+        }
+    }
+    return 1;
+}
+// Fin EX4 //
+
 int main()
 {
 	int n = 9;
@@ -97,6 +144,8 @@ int main()
 		{0, 3, 6, 4, 0, 0, 0, 0, 0},
 		{0, 7, 0, 0, 6, 9, 0, 0, 4}
 	};
+
+    printf("Verif grille_facile = %d\n", verifGrille(grille_facile, n));
 
 	int grille_moyenne[9][9] = {
 		{1, 0, 0, 7, 0, 6, 0, 0, 0},
