@@ -25,17 +25,20 @@ void remplirGrille(int grille[9][9], int n)
     while (run)
     {
         afficherGrille(grille, n);
-        do 
+        do
         {
-            printf("Ligne : ");
-            scanf(" %d", &l);
-            printf("Colonne : ");
-            scanf(" %d", &c);
-        } while (c > 8 || c < 0 || l > 8 || l < 0);
-        printf("Valeur : ");
-        scanf(" %d", &valeur);
+            do 
+            {
+                printf("Ligne : ");
+                scanf(" %d", &l);
+                printf("Colonne : ");
+                scanf(" %d", &c);
+            } while (c > 8 || c < 0 || l > 8 || l < 0);
+            printf("Valeur : ");
+            scanf(" %d", &valeur);
 
-        grille[l][c] = valeur;
+            grille[l][c] = valeur;
+        } while (verifGrille(grille, n) == 0);
 
         printf("Entrez une autre valeur ? (1/0) ");
         scanf(" %d", &run);
@@ -150,10 +153,6 @@ int main()
 		{0, 3, 6, 4, 0, 0, 0, 0, 0},
 		{0, 7, 0, 0, 6, 9, 0, 0, 4}
 	};
-
-    afficherGrille(grille_facile, n);
-
-    printf("Verif grille_facile = %d\n", verifGrille(grille_facile, n));
 
 	int grille_moyenne[9][9] = {
 		{1, 0, 0, 7, 0, 6, 0, 0, 0},
