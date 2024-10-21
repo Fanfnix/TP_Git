@@ -79,15 +79,19 @@ void afficherGrille(int grille[9][9], int n)
 
 int verifListe(int liste[9], int n)
 {
-    int parcourus[9];
+    int parcourus[9] = {0,0,0,0,0,0,0,0,0};
     for (int i = 0; i < n; i++)
     {
         for (int j = 0; j < strlen(parcourus); j++)
         {
-            if (liste[i] == parcourus[j])
+            if (liste[i] == parcourus[j] && liste[i] != 0)
             {
                 return 0;
             }
+        }
+        if (liste[i] != 0)
+        {
+            parcourus[i] = liste[i];
         }
     }
     return 1;
@@ -96,6 +100,7 @@ int verifListe(int liste[9], int n)
 int verifGrille(int grille[9][9], int n)
 {
     int colonne[9][9];
+    int ligne[9][9];
     for (int i = 0; i < n; i++)
     {
         if (verifListe(grille[i], n) == 0)
@@ -104,8 +109,9 @@ int verifGrille(int grille[9][9], int n)
         }
         for (int j = 0; j < n; j++)
         {
-            colonne[j][i] = grille[i][j];
-            if (grille[i][j] < 1 || grille[i][j] > n)
+            colonne[i][j] = grille[j][i];
+            ligne[i][j] = grille[i][j];
+            if (grille[i][j] < 0 || grille[i][j] > n)
             {
                 return 0;
             }
@@ -144,6 +150,8 @@ int main()
 		{0, 3, 6, 4, 0, 0, 0, 0, 0},
 		{0, 7, 0, 0, 6, 9, 0, 0, 4}
 	};
+
+    afficherGrille(grille_facile, n);
 
     printf("Verif grille_facile = %d\n", verifGrille(grille_facile, n));
 
