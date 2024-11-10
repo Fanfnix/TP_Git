@@ -1,3 +1,5 @@
+// NOTE : 14/20
+
 #include <stdio.h>
 #include <string.h>
 
@@ -15,42 +17,11 @@ void initGrille(int grille[9][9], int n)
     }
 }
 // Fin EX1 //
-
-// EX2 //
-
-void remplirGrille(int grille[9][9], int n)
-{
-    int run = 1;
-    int l, c, valeur;
-    while (run)
-    {
-        afficherGrille(grille, n);
-        do
-        {
-            do 
-            {
-                printf("Ligne : ");
-                scanf(" %d", &l);
-                printf("Colonne : ");
-                scanf(" %d", &c);
-            } while (c > 8 || c < 0 || l > 8 || l < 0);
-            printf("Valeur : ");
-            scanf(" %d", &valeur);
-
-            grille[l][c] = valeur;
-        } while (verifGrille(grille, n) == 0);
-
-        printf("Entrez une autre valeur ? (1/0) ");
-        scanf(" %d", &run);
-    }
-}
-// Fin EX2 //
-
 // EX3 //
 
 void afficherGrille(int grille[9][9], int n)
 {
-    for(int i = 0; i < n; i++)
+    for (int i = 0; i < n; i++)
     {
         printf("---");
     }
@@ -70,13 +41,44 @@ void afficherGrille(int grille[9][9], int n)
         }
         printf("\n");
     }
-    for(int i = 0; i < n; i++)
+    for (int i = 0; i < n; i++)
     {
         printf("---");
     }
     printf("\n");
 }
 // Fin EX3 //
+// EX2 //
+
+void remplirGrille(int grille[9][9], int n)
+{
+    int run = 1;
+    int l, c, valeur;
+    while (run)
+    {
+        afficherGrille(grille, n);
+        do
+        {
+            do 
+            {
+                printf("Ligne : ");
+                scanf_s(" %d", &l);
+                printf("Colonne : ");
+                scanf_s(" %d", &c);
+            } while (c > 8 || c < 0 || l > 8 || l < 0);
+            printf("Valeur : ");
+            scanf_s(" %d", &valeur);
+
+            grille[l][c] = valeur;
+        } while (verifGrille(grille, n) == 0);
+
+        printf("Entrez une autre valeur ? (1/0) ");
+        scanf_s(" %d", &run);
+    }
+}
+// Fin EX2 //
+
+
 
 // EX4 //
 
